@@ -11,7 +11,9 @@
         select { width: 100%; padding: 15px; margin-bottom: 15px; border-radius: 10px; border: 1px solid #e2e8f0; font-size: 16px; background: #f8fafc; }
         button { background: #5a67d8; color: white; border: none; padding: 15px 20px; border-radius: 10px; font-size: 18px; width: 100%; cursor: pointer; transition: background 0.3s; margin-top: 10px; }
         button:hover { background: #434ce6; }
-        #result { margin-top: 20px; font-size: 18px; font-weight: bold; color: #2d3748; min-height: 50px; }
+        #result { margin-top: 20px; font-size: 18px; font-weight: bold; color: #2d3748; min-height: 100px; text-align: left; line-height: 1.5; }
+        .percentage { display: block; text-align: center; font-size: 24px; color: #5a67d8; margin-bottom: 10px; }
+        .description { font-size: 15px; font-weight: normal; color: #4a5568; }
     </style>
 </head>
 <body>
@@ -58,26 +60,29 @@
             const resultDiv = document.getElementById('result');
             
             if (!sign1 || !sign2) {
-                resultDiv.innerHTML = "Будь ласка, обери обидва знаки!";
-                resultDiv.style.color = "#e53e3e";
+                resultDiv.innerHTML = "<div style='text-align:center; color:#e53e3e;'>Будь ласка, обери обидва знаки!</div>";
                 return;
             }
 
-            resultDiv.innerHTML = "⏳ Розраховуємо...";
-            resultDiv.style.color = "#a0aec0";
+            resultDiv.innerHTML = "<div style='text-align:center; color:#a0aec0;'>⏳ Аналізуємо енергії...</div>";
 
             setTimeout(() => {
-                const percentage = Math.floor(Math.random() * (99 - 50 + 1)) + 50;
+                const percentage = Math.floor(Math.random() * (99 - 60 + 1)) + 60;
+                
+                // Детальні описи для різних типів сумісності
                 const texts = [
-                    "Кармічна зустріч! Ви чудово доповнюєте одне одного.",
-                    "Хороший потенціал, але доведеться працювати над стосунками.",
-                    "Ідеальна пара! Зорі на вашому боці.",
-                    "Цікавий союз. Між вами багато пристрасті та емоцій."
+                    "Це кармічна зустріч, де важливу роль відіграє Сатурн. Стосунки можуть вимагати терпіння, відповідальності та серйозної роботи над собою. Якщо ви пройдете ці спільні уроки, ваш союз стане міцним фундаментом на роки.",
+                    "Чудова синергія! Ваші енергії дуже гармонійно переплітаються. Вплив Юпітера розширює горизонти цієї пари, даруючи оптимізм, щедрість та глибоке взаєморозуміння. Ви здатні надихати одне одного на великі звершення.",
+                    "Дуже цікавий союз, сповнений яскравих емоцій. Енергія Марса дає цій парі багато пристрасті та потужний драйв для спільного розвитку. Головне завдання — вчитися знаходити компроміси, щоб цей вогонь зігрівав, а не створював конфлікти.",
+                    "Неординарна та яскрава взаємодія! Енергія Урана приносить у ваші стосунки багато сюрпризів, оновлень та прагнення до свободи. З вами ніколи не буває нудно, але для тривалої стабільності потрібен дуже високий рівень довіри."
                 ];
+                
                 const randomText = texts[Math.floor(Math.random() * texts.length)];
                 
-                resultDiv.innerHTML = `Сумісність: ${percentage}%<br><span style="font-size: 14px; font-weight: normal; color: #4a5568; margin-top: 10px; display: inline-block;">${randomText}</span>`;
-                resultDiv.style.color = "#2d3748";
+                resultDiv.innerHTML = `
+                    <span class="percentage">Сумісність: ${percentage}%</span>
+                    <span class="description">${randomText}</span>
+                `;
             }, 800);
         }
     </script>
