@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Астро Сумісність</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background-color: #f7f9fc; color: #333; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .container { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; max-width: 90%; width: 350px; }
+        h1 { color: #5a67d8; font-size: 24px; margin-bottom: 20px; }
+        select { width: 100%; padding: 15px; margin-bottom: 15px; border-radius: 10px; border: 1px solid #e2e8f0; font-size: 16px; background: #f8fafc; }
+        button { background: #5a67d8; color: white; border: none; padding: 15px 20px; border-radius: 10px; font-size: 18px; width: 100%; cursor: pointer; transition: background 0.3s; margin-top: 10px; }
+        button:hover { background: #434ce6; }
+        #result { margin-top: 20px; font-size: 18px; font-weight: bold; color: #2d3748; min-height: 50px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Перевірка Сумісності ✨</h1>
+        <select id="sign1">
+            <option value="">Обери свій знак...</option>
+            <option value="Овен">♈ Овен</option>
+            <option value="Телець">♉ Телець</option>
+            <option value="Близнюки">♊ Близнюки</option>
+            <option value="Рак">♋ Рак</option>
+            <option value="Лев">♌ Лев</option>
+            <option value="Діва">♍ Діва</option>
+            <option value="Терези">♎ Терези</option>
+            <option value="Скорпіон">♏ Скорпіон</option>
+            <option value="Стрілець">♐ Стрілець</option>
+            <option value="Козеріг">♑ Козеріг</option>
+            <option value="Водолій">♒ Водолій</option>
+            <option value="Риби">♓ Риби</option>
+        </select>
+        <select id="sign2">
+            <option value="">Обери знак партнера...</option>
+            <option value="Овен">♈ Овен</option>
+            <option value="Телець">♉ Телець</option>
+            <option value="Близнюки">♊ Близнюки</option>
+            <option value="Рак">♋ Рак</option>
+            <option value="Лев">♌ Лев</option>
+            <option value="Діва">♍ Діва</option>
+            <option value="Терези">♎ Терези</option>
+            <option value="Скорпіон">♏ Скорпіон</option>
+            <option value="Стрілець">♐ Стрілець</option>
+            <option value="Козеріг">♑ Козеріг</option>
+            <option value="Водолій">♒ Водолій</option>
+            <option value="Риби">♓ Риби</option>
+        </select>
+        <button onclick="calculateCompatibility()">Дізнатися сумісність</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calculateCompatibility() {
+            const sign1 = document.getElementById('sign1').value;
+            const sign2 = document.getElementById('sign2').value;
+            const resultDiv = document.getElementById('result');
+            
+            if (!sign1 || !sign2) {
+                resultDiv.innerHTML = "Будь ласка, обери обидва знаки!";
+                resultDiv.style.color = "#e53e3e";
+                return;
+            }
+
+            resultDiv.innerHTML = "⏳ Розраховуємо...";
+            resultDiv.style.color = "#a0aec0";
+
+            setTimeout(() => {
+                const percentage = Math.floor(Math.random() * (99 - 50 + 1)) + 50;
+                const texts = [
+                    "Кармічна зустріч! Ви чудово доповнюєте одне одного.",
+                    "Хороший потенціал, але доведеться працювати над стосунками.",
+                    "Ідеальна пара! Зорі на вашому боці.",
+                    "Цікавий союз. Між вами багато пристрасті та емоцій."
+                ];
+                const randomText = texts[Math.floor(Math.random() * texts.length)];
+                
+                resultDiv.innerHTML = `Сумісність: ${percentage}%<br><span style="font-size: 14px; font-weight: normal; color: #4a5568; margin-top: 10px; display: inline-block;">${randomText}</span>`;
+                resultDiv.style.color = "#2d3748";
+            }, 800);
+        }
+    </script>
+</body>
+</html>
